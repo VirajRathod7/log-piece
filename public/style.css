@@ -1,13 +1,77 @@
-body {
-    font-family: Arial, sans-serif;
-    max-width: 600px;
-    margin: 40px auto;
-    padding: 20px;
-    background: #f6f6f6;
+@font-face {
+    font-family: 'OPFont';    /* you choose the name */
+    src: url('fonts/op.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
 }
 
-h1 {
+
+body {
+    font-family: 'OPFont', Arial, sans-serif;
+    position: relative;
+    margin: 0;
+    padding: 40px 0;
+    background: url('grand_line_bg.png');
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+body::before{
+    content: "";
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);/*??*/
+    width: 1100px;
+    height: 1100px;
+    background: url(op_icon.png) no-repeat center;
+    background-size: contain;
+    pointer-events: none;
+    z-index: -1;
+    opacity: 0.2;
+    filter: sepia(100%) brightness(0.7) saturate(80%);
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: -1;
+
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 20, 40, 0.45),
+        rgba(0, 0, 0, 0.15),
+        rgba(0, 20, 40, 0.45)
+    );
+}
+
+
+/* MAIN CENTER CONTAINER */
+.container {
+    width: 80%;
+    max-width: 900px;
+    margin: auto;
+    position: relative;
+    z-index: 2; /* above the watermark */
+}
+
+h1{
     text-align: center;
+    font-size: 150px;
+    color: maroon;
+
+     /* OUTLINE */
+    text-shadow:
+        3px 3px 0px #3a0000,
+        -1px -1px 0px #3a0000,
+        1px -1px 0px #3a0000,
+        -1px 1px 0px #3a0000,
+        1px 1px 0px #3a0000;
 }
 
 .input-container {
@@ -16,31 +80,79 @@ h1 {
     margin-bottom: 20px;
 }
 
+.input-wrapper {
+    width: 90%;
+    max-width: 1100px;
+    margin: 20px auto;
+}
+
 input {
+    background: url('card.png');
+    background-size: cover;
     flex: 1;
     padding: 10px;
     font-size: 16px;
+    background: #f2e9d8;
+    border: 2px solid #3a2c1b;
+    color: #3b2e1f;
+    border-radius: 6px;
 }
 
 button {
-    padding: 10px 15px;
+    padding: 10px 20px;
     cursor: pointer;
-    background: black;
+    background: #6b1d1d;
     color: white;
-    border: none;
-}
-.note {
-    background: white;
-    padding: 15px;
-    margin-bottom: 10px;
-    display: flex;
-    justify-content: space-between;
+    border: solid;
     border-radius: 6px;
+    border-color: #3a2c1b;
 }
+
+.note {
+    background-image: url('card.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    border: 2px solid #3a2c1b;
+    border-radius: 0; /* rectangular card */
+    padding: 14px 18px;
+
+    color: #3b2e1f;
+    font-size: 1.1rem;
+
+    box-shadow: 0 3px 6px rgba(0,0,0,0.25);
+    transition: 0.15s ease;
+}
+
+.note {
+    transform: rotate(calc(-2deg + (4deg * var(--r))));
+}
+
+#notesList {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 20px;
+    width: 90%;
+    max-width: 1100px;
+    margin: 30px auto 0 auto;
+}
+
+
+
+.note:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.3);
+}
+
+/* DELETE BUTTON */
 .delete-btn {
-    background: red;
+    float: right;
+    background: #6b1d1d;
     color: white;
     border: none;
     padding: 6px 10px;
     cursor: pointer;
+    border-radius: 4px;
 }
+

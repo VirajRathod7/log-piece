@@ -16,6 +16,8 @@ async function loadNotes() {
             <span>${note.text}</span>
             <button class="delete-btn" onclick="deleteNote(${note.id})">X</button>
         `;
+
+        el.style.setProperty('--r', Math.random());
         notesList.appendChild(el);
     });
 }
