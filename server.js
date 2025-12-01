@@ -1,39 +1,34 @@
 //Imports
-const express = require("express");//Building APIs
-const cors = require("cors");//connecting frontend -> backend
-const fs = require("fs");//file system allows reading writing notes.json
+const express = require("express");
+const cors = require("cors");
+const fs = require("fs");
 
 //Creating The App
-const app = express();//backend server
-app.use(cors());//frontend changes
-app.use(express.json());//backend can read json from frontend
+const app = express();
+app.use(cors());
+app.use(express.json());
+
+// Serve frontend
+app.use(express.static("public"));
 
 const NOTES_FILE = "notes.json";
 
 //FILE HELPERS
-
-// Read notes from file
 function loadNotes() {
-    if (!fs.existsSync(NOTES_FILE)) return [];//Return empty array if file doesn't exist
-    return JSON.parse(fs.readFileSync(NOTES_FILE));//read notes.json and convert text to JS array
+    if (!fs.existsSync(NOTES_FILE)) return [];
+    return JSON.parse(fs.readFileSync(NOTES_FILE));
 }
 
-// Save notes to file
 function saveNotes(notes) {
-    fs.writeFileSync(NOTES_FILE, JSON.stringify(notes, null, 2));//Saves text to notes.json
+    fs.writeFileSync(NOTES_FILE, JSON.stringify(notes, null, 2));
 }
 
 //API routes
-
-// GET all notes
-// Frontend calls this when the page loads.
-// Backend replies with the notes list.
-app.get("/notes", (req, res) => {// Get /notes=>Reads all notes
+app.get("/notes", (req, res) => {
     const notes = loadNotes();
     res.json(notes);
 });
 
-// POST add a new note
 app.post("/notes", (req, res) => {
     const notes = loadNotes();
     const newNote = {
@@ -45,13 +40,17 @@ app.post("/notes", (req, res) => {
     res.json(newNote);
 });
 
-// DELETE a note
 app.delete("/notes/:id", (req, res) => {
     const id = Number(req.params.id);
     let notes = loadNotes();
     notes = notes.filter(note => note.id !== id);
     saveNotes(notes);
     res.json({ success: true });
+});
+
+// Serve homepage (Fix for Render)
+app.get("/", (req, res) => {
+    res.sendFile(__dirname + "/public/index.html");
 });
 
 app.listen(3000, () => {
