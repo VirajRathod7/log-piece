@@ -1,4 +1,5 @@
-const API_URL = "http://localhost:3000/notes";
+const API_URL = "https://log-piece.onrender.com/notes";
+
 const notesList = document.getElementById("notesList");
 const addBtn = document.getElementById("addBtn");
 const noteInput = document.getElementById("noteInput");
