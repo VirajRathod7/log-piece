@@ -3,22 +3,23 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Notes App</title>
+    <title>Log Piece</title>
     <link rel="stylesheet" href="style.css" />
 </head>
-<body>
+<body class="home-page">
 
-    <h1 class="title">L O G - P I E C E</h1>
+    <h1 class="title">LOG - PIECE</h1>
 
-    <div class="input-wrapper">
-    <div class="input-container">
-        <input id="noteInput" type="text" placeholder="Enter a note..." />
-        <button id="addBtn">Add</button>
-    </div>
-    </div>
+    <div class="icon-panel">
+        <div class="icon-card" onclick="location.href='theory_centre.html'">
+            <img src="images/op_icon.png" alt="Theory Centre" class="icon-img"/>
+            <p class="icon-title">THEORY CENTRE</p>
+        </div>
+        <!-- <div class="icon-card" onclick="location.href='notes.html'">
+            <img src="images/pony.png" alt="Notes" class="icon-img"/>
+            <p class="icon-title">CHARACTERS</p>
+        </div> -->
+    </div>    
 
-    <div id="notesList" class="journal-grid"></div>
-
-    <script src="script.js"></script>
 </body>
 </html>

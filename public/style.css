@@ -1,47 +1,112 @@
+/* GLOBAL FONT SETUP */
 @font-face {
-    font-family: 'OPFont';    /* you choose the name */
+    font-family: 'OPFont';
     src: url('fonts/op.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 
-
 body {
-    font-family: 'OPFont', Arial, sans-serif;
-    position: relative;
     margin: 0;
+    font-family: 'OPFont', Arial, sans-serif;
+    color: #fff;
+}
+
+/* Titles */
+h1 {
+    font-weight: normal;
+    text-align: center;
+    font-size: 150px;
+    color: #E8E9F3;
+    -webkit-text-stroke: 1.5px #252A4F;
+    text-shadow:
+        3px 3px 0px #E59500,
+        -1px -1px 0px #E59500,
+        1px -1px 0px #E59500,
+        -1px 1px 0px #E59500,
+        1px 1px 0px #E59500;
+    margin: 0;
+    padding-top: 30px;
+}
+
+
+
+/* Home page */
+.home-page {
+    height: 100vh;
+    background: url('images/wano2.png') center/cover no-repeat fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.home-page .icon-panel {
+    display: flex;
+    gap: 40px;
+    margin-top: 40px;
+}
+
+.home-page .icon-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.home-page .icon-img {
+    height: 190px;
+    width: auto;
+    filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.3));
+    transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+.home-page .icon-card:hover .icon-img {
+    transform: rotate(180deg) scale(1.15);
+    filter: drop-shadow(0 0 12px #B86F52);
+}
+
+.home-page .icon-title {
+    margin-top: 12px;
+    font-size: 22px;
+    letter-spacing: 2px;
+    color: #eadac6;
+    text-shadow: 0 0 4px black;
+}
+
+
+
+/* theory centre page */
+.theory-title {
+    font-weight: normal;
+    text-align: center;
+    font-size: 150px;
+    color: #E8E9F3;
+    -webkit-text-stroke: 1.5px black;
+    text-shadow:
+        3px 3px 0px #E59500,
+        -1px -1px 0px #E59500,
+        1px -1px 0px #E59500,
+        -1px 1px 0px #E59500,
+        1px 1px 0px #E59500;
+    margin: 0;
+    padding-top: 30px;
+}
+
+.logbook-page {
+    background: url('images/wano2.png') center/cover no-repeat fixed;
     padding: 40px 0;
-    background: url('grand_line_bg.png');
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
+    position: relative;
 }
 
-body::before{
-    content: "";
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);/*??*/
-    width: 1100px;
-    height: 1100px;
-    background: url(op_icon.png) no-repeat center;
-    background-size: contain;
-    pointer-events: none;
-    z-index: -1;
-    opacity: 0.2;
-    filter: sepia(100%) brightness(0.7) saturate(80%);
-}
-
-body::after {
+.logbook-page::after {
     content: "";
     position: fixed;
     top: 0; left: 0;
     width: 100%; height: 100%;
     pointer-events: none;
     z-index: -1;
-
     background: linear-gradient(
         to bottom,
         rgba(0, 20, 40, 0.45),
@@ -50,86 +115,51 @@ body::after {
     );
 }
 
-
-/* MAIN CENTER CONTAINER */
-.container {
+.logbook-page .container {
     width: 80%;
     max-width: 900px;
     margin: auto;
-    position: relative;
-    z-index: 2; /* above the watermark */
+    z-index: 2;
 }
 
-h1{
-    text-align: center;
-    font-size: 150px;
-    color: maroon;
-
-     /* OUTLINE */
-    text-shadow:
-        3px 3px 0px #3a0000,
-        -1px -1px 0px #3a0000,
-        1px -1px 0px #3a0000,
-        -1px 1px 0px #3a0000,
-        1px 1px 0px #3a0000;
+.logbook-page .input-wrapper {
+    display: flex;
+    width: 90%;
+    max-width: 1100px;
+    margin: 20px auto;
+    justify-content: center;
 }
 
-.input-container {
+.logbook-page input {
+    flex: 1;
+    padding: 14px;
+    font-size: 20px;
+    background: #252A4F;
+    border: solid #E59500;
+    color: #E8E9F3;
+    border-radius: 20px;
+}
+
+.logbook-page .input-container {
     display: flex;
     gap: 10px;
     margin-bottom: 20px;
 }
 
-.input-wrapper {
-    width: 90%;
-    max-width: 1100px;
-    margin: 20px auto;
-}
-
-input {
-    background: url('card.png');
-    background-size: cover;
-    flex: 1;
-    padding: 10px;
-    font-size: 16px;
-    background: #f2e9d8;
-    border: 2px solid #3a2c1b;
-    color: #3b2e1f;
-    border-radius: 6px;
-}
-
-button {
+.logbook-page button {
+    font-family: 'OPFont', Arial, sans-serif !important;
+    font-weight: 600;
+    font-size: 18px;
     padding: 10px 20px;
     cursor: pointer;
-    background: #6b1d1d;
-    color: white;
+    background: #151B30;
+    color: #E8E9F3;
     border: solid;
-    border-radius: 6px;
-    border-color: #3a2c1b;
+    border-radius: 20px;
+    border-color: #E59500;
 }
 
-.note {
-    background-image: url('card.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-
-    border: 2px solid #3a2c1b;
-    border-radius: 0; /* rectangular card */
-    padding: 14px 18px;
-
-    color: #3b2e1f;
-    font-size: 1.1rem;
-
-    box-shadow: 0 3px 6px rgba(0,0,0,0.25);
-    transition: 0.15s ease;
-}
-
-.note {
-    transform: rotate(calc(-2deg + (4deg * var(--r))));
-}
-
-#notesList {
+.logbook-page #notesList {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
     gap: 20px;
@@ -138,21 +168,52 @@ button {
     margin: 30px auto 0 auto;
 }
 
+.logbook-page .note {
+    position: relative;
+    min-height: 180px;
+    padding: 20px;
 
+    background-image: url('images/card.png');
+    background-size: cover;
+    background-position: center;
 
-.note:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 14px rgba(0,0,0,0.3);
+    border: 3px solid #2a1d10;
+    border-radius: 12px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #3b2e1f;
+    font-size: 1.35rem;
+    font-weight: 600;
+
+    box-shadow: 0 3px 6px rgba(0,0,0,0.25);
+    transition: 0.15s ease;
+    transform: rotate(calc(-2deg + (4deg * var(--r))));
 }
 
-/* DELETE BUTTON */
-.delete-btn {
+.logbook-page .note:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 6px 14px rgba(0,0,0,0.3);
+}
+
+.logbook-page .delete-btn {
+    font-family: 'OPFont', Arial, sans-serif !important;
+    position: absolute;
+    bottom: 16px;
+    justify-content: center;
     float: right;
     background: #6b1d1d;
     color: white;
     border: none;
-    padding: 6px 10px;
+    padding: 6px 14px;
     cursor: pointer;
-    border-radius: 4px;
+    border-radius: 8px;
+    transition: 0.15s ease;
+    font-size: 20px;
 }
 
+.delete-btn:hover {
+    background: #912323;
+}

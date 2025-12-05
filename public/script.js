@@ -15,7 +15,7 @@ async function loadNotes() {
         el.className = "note";
         el.innerHTML = `
             <span>${note.text}</span>
-            <button class="delete-btn" onclick="deleteNote(${note.id})">X</button>
+            <button class="delete-btn" onclick="deleteNote(${note.id})">DELETE</button>
         `;
 
         el.style.setProperty('--r', Math.random());
